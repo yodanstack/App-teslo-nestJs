@@ -1,7 +1,8 @@
 import { text } from "stream/consumers";
-import { BeforeInsert, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { ProductImage } from "./product-image.entity";
 
-@Entity()
+@Entity({name: 'products'})
 export class Product {
     
     @PrimaryGeneratedColumn('uuid')
@@ -43,9 +44,16 @@ export class Product {
 
     @Column('text',{
         array: true,
-        default: ''
+        default: () => "'{}'"
     })
     tags: string[];
+
+    @OneToMany(
+        ()=> ProductImage,
+        productImage => productImage.product,
+        {cascade: true, eager: true}
+    )
+    images?: ProductImage[];
 
     @BeforeInsert()
     checkSlugInsert(){

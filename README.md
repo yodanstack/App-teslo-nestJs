@@ -22,4 +22,25 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 # Teslo API
-```docker-compose up -d```
+1. Clonar el proyecto
+2. Bajar los paquetes de node 
+  ```
+  yarn install
+  ```
+3. Clonar el archivo __.env.template__ y renombrarlo a  __.env__
+4. Cambiar las variables de entorno
+5. Levantar la base de datos 
+  ```
+  docker-compose up -d
+  ```
+
+
+6. Ejecutar el __Seed__ para llenar la base de datos 
+  ```
+  http://localhost:3000/api/seed
+  ```                 
+
+7. Levantar la app 
+    ```npm start``` 
+          o
+  ```yarn start:dev```
