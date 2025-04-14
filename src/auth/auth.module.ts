@@ -23,7 +23,7 @@ import { JwtStrategy } from './strategies/jwt-strategy';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: ( confingServide:  ConfigService )=> {
-
+        
         return {
           secret: confingServide.get('JWT_SECRET'),
           signOptions: {
@@ -37,7 +37,8 @@ import { JwtStrategy } from './strategies/jwt-strategy';
     TypeOrmModule, 
     JwtStrategy,
     PassportModule,
-    JwtModule
+    JwtModule,
+    JwtStrategy
   ]
 })
 export class AuthModule {}

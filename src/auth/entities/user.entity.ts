@@ -1,5 +1,6 @@
 import { isBoolean } from "class-validator";
-import { BeforeInsert, BeforeSoftRemove, BeforeUpdate, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "src/product/entities";
+import { BeforeInsert, BeforeSoftRemove, BeforeUpdate, Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
 export class User {
@@ -31,6 +32,11 @@ export class User {
         })
     roles: string[];
 
+    @OneToMany(
+        () => Product,
+        (product) => product.user
+    )
+    product: Product
 
     @BeforeInsert()
     checkFilesBeforeInsert(){
