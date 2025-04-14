@@ -9,6 +9,7 @@ import { ProductModule } from './product/product.module';
 import { SeedModule } from './seed/seed.module';
 import { PaginationDto } from './common/dtos/pagination.dto';
 import { FilesModule } from './files/files.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -28,11 +29,13 @@ import { FilesModule } from './files/files.module';
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
+      exclude: ['/api']
     }),
     ProductModule,
     PaginationDto,
     SeedModule,
-    FilesModule
+    FilesModule,
+    AuthModule
   ],
 })
 export class AppModule {}

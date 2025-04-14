@@ -15,7 +15,7 @@ export class FilesController {
     private readonly configService: ConfigService
   ) {}
 
-  @Get('prodcut:/imageName')
+  @Get('prodcut/:imageName')
   findProductImage(
     @Res() res: Response,
     @Param('imageName') imageName: string){
